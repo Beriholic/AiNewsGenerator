@@ -1,6 +1,71 @@
 # AI News Generator
 
-AI News Generator 是一个智能新闻生成系统，它能够根据用户提供的话题自动生成高质量的新闻文章。系统采用多代理协作的方式，通过多轮迭代优化确保文章的质量。
+AI News Generator 是一个智能新闻生成系统，它能够根据用户提供的话题自动生成高质量的新闻文章。系统采用多代理协作的方式，通过多轮迭代优化确保文章质量。
+
+## 安装与运行
+
+### 系统要求
+
+- Python >= 3.12
+- uv（Python包管理工具）
+
+### 安装步骤
+
+**安装 uv**
+
+```bash
+pip install uv
+```
+
+**克隆项目**
+
+使用Github
+```bash
+git clone https://github.com/Beriholic/AiNewsGenerator.git
+```
+
+使用Gitee
+```bash
+git clone https://gitee.com/beriholic/AiNewsGenerator.git
+```
+
+**安装依赖**
+
+```bash
+uv sync
+```
+
+### 环境变量配置
+
+在项目根目录创建 `.env` 文件，添加以下配置：
+
+```env
+# 智谱AI API密钥
+ZHIPU_API_KEY=your_zhipu_api_key
+# 智谱AI模型选择
+ZHIPU_MODEL=glm-4-flash
+# Google Search API密钥
+SERPER_API_KEY=your_serper_api_key
+# 最大审核修订次数
+MAX_REVIEW_CYCLES=2
+# 输出目录
+OUTPUT_DIR=./output
+```
+
+你可以复制 `.env.example` 文件并重命名为 `.env`，然后修改其中的配置值：
+
+```bash
+cp .env.example .env
+```
+
+### 运行项目
+
+```bash
+uv run main.py
+```
+
+输入你感兴趣的新闻话题，系统将自动生成相关的新闻文章。生成的文章将保存在 `output` 目录下。
+
 
 ## 功能特点
 
@@ -9,7 +74,7 @@ AI News Generator 是一个智能新闻生成系统，它能够根据用户提�
 - ✅ 事实性校验：确保文章内容的准确性
 - 📊 专业审核：对文章结构和风格进行评估
 - 🔄 迭代优化：根据反馈进行多轮修订
-- 📄 多格式支持：支持 Markdown 和 HTML 输出
+- 📄 格式支持：支持 HTML 输出
 
 ## 系统架构
 
@@ -54,12 +119,6 @@ flowchart TB
     style Final fill:#d5e8d4,stroke:#82b366
 ```
 
-## 使用要求
-
-系统需要以下API密钥 (使用环境变量输入)：
-- ZHIPU_API_KEY：用于AI服务
-- SERPER_API_KEY：用于搜索服务
-
 ## 工作原理
 
 1. **信息收集阶段**
@@ -95,7 +154,6 @@ flowchart TB
 
 系统会在 `output` 目录下生成以下文件：
 - `article.html`：HTML 格式的文章
-
 
 ## 演示
 ![输入](./docs/img/input.png)

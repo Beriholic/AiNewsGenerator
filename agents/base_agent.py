@@ -5,9 +5,9 @@ class BaseAgent:
     """
     所有 Agent 的基类，负责初始化 ZhipuAI 客户端和提供通用的聊天完成方法。
     """
-    def __init__(self, model: str = config.ZHIPU_MODEL, temperature: float = 0.7):
+    def __init__(self,temperature: float = 0.7):
         self.client = ZhipuAI(api_key=config.ZHIPU_API_KEY)
-        self.model = model
+        self.model = config.ZHIPU_MODEL
         self.temperature = temperature
 
     def _create_chat_completion(self, messages: list[dict]) -> str:

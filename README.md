@@ -109,7 +109,8 @@ flowchart TB
     end
     
     Draft --> Review
-    Exit --> Assembly[组装Markdown<br>MarkdownAssemblyAgent]
+    Exit --> EnhanceFormat[增强格式<br>EnhanceFormatAgent]
+    EnhanceFormat --> Assembly[组装Markdown<br>MarkdownAssemblyAgent]
     Assembly --> HTML[转换HTML<br>HTMLAgent]
     HTML --> Final([完成])
 

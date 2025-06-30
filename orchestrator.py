@@ -1,7 +1,8 @@
 import config
 from agents import (
     InfoAgent, HeadlineAgent, OutlineAgent, ParagraphAgent,
-    FactCheckAgent, ReviewAgent, MarkdownAssemblyAgent, HTMLAgent
+    FactCheckAgent, EnhanceFormatAgent, ReviewAgent, MarkdownAssemblyAgent,
+    HTMLAgent
 )
 import webbrowser
 import os
@@ -20,6 +21,7 @@ class NewsOrchestrator:
         self.outline_agent = OutlineAgent()
         self.paragraph_agent = ParagraphAgent()
         self.fact_check_agent = FactCheckAgent()
+        self.enhance_format_agent = EnhanceFormatAgent()
         self.review_agent = ReviewAgent()
         self.markdown_assembly_agent = MarkdownAssemblyAgent()
         self.html_agent = HTMLAgent()
@@ -68,10 +70,14 @@ class NewsOrchestrator:
             
             print("    - 收到评论意见，要求修订...")
             current_draft = self.paragraph_agent.revise_draft(current_draft, review_feedback)
+
+
             revision_cycles += 1
         
         if not self.final_article:
             print(f"    - 已达到最大修订次数 ({config.MAX_REVIEW_CYCLES})，接受当前最终版本。")
+            print("    - 格式增强中...")
+            current_draft = self.enhance_format_agent.run(current_draft)
             self.final_article = current_draft
 
         # --- 步骤 6: 组装最终 Markdown 文本 ---

@@ -49,7 +49,7 @@ SERPER_API_KEY=your_serper_api_key
 # 最大审核修订次数
 MAX_REVIEW_CYCLES=2
 # 输出目录
-OUTPUT_DIR=./output
+OUTPUT_BASE=./output
 ```
 
 你可以复制 `.env.example` 文件并重命名为 `.env`，然后修改其中的配置值：

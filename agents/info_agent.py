@@ -20,6 +20,7 @@ class InfoAgent(BaseAgent):
         all_search_results = []
         for keyword in keywords:
             search_result = search_serper(keyword)
+            sleep(1)
             all_search_results.append(f"--- 关于 '{keyword}' 的搜索结果 ---\n{search_result}")
 
         # 3. 整合资料
